@@ -122,3 +122,6 @@ export PATH="/home/anirudh/anaconda3/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# setting default editor as atom
+export EDITOR='emacs'
