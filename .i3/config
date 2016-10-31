@@ -170,7 +170,7 @@ bar {
 }
 
 
-bindsym $mod+shift+x exec i3lock
+bindsym $mod+shift+x exec i3lock -c 000000
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec rofi -show run -lines 10 -eh 2 -width 100 -padding 300 -opacity "90" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Ubuntu 18"
