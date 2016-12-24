@@ -2,40 +2,40 @@
   "_args": [
     [
       {
-        "raw": "/tmp/d-11689-11750-n483am/package.tgz",
+        "raw": "/tmp/d-116931-16014-16quvpz/package.tgz",
         "scope": null,
         "escapedName": null,
         "name": null,
-        "rawSpec": "/tmp/d-11689-11750-n483am/package.tgz",
-        "spec": "/tmp/d-11689-11750-n483am/package.tgz",
+        "rawSpec": "/tmp/d-116931-16014-16quvpz/package.tgz",
+        "spec": "/tmp/d-116931-16014-16quvpz/package.tgz",
         "type": "local"
       },
-      "/tmp/apm-install-dir-11689-11750-2oa026"
+      "/tmp/apm-install-dir-116931-16014-11sfdwc"
     ]
   ],
-  "_from": "../d-11689-11750-n483am/package.tgz",
-  "_id": "emacs-plus@0.11.0",
+  "_from": "../d-116931-16014-16quvpz/package.tgz",
+  "_id": "emacs-plus@0.11.1",
   "_inCache": true,
   "_installable": true,
   "_location": "/emacs-plus",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "/tmp/d-11689-11750-n483am/package.tgz",
+    "raw": "/tmp/d-116931-16014-16quvpz/package.tgz",
     "scope": null,
     "escapedName": null,
     "name": null,
-    "rawSpec": "/tmp/d-11689-11750-n483am/package.tgz",
-    "spec": "/tmp/d-11689-11750-n483am/package.tgz",
+    "rawSpec": "/tmp/d-116931-16014-16quvpz/package.tgz",
+    "spec": "/tmp/d-116931-16014-16quvpz/package.tgz",
     "type": "local"
   },
   "_requiredBy": [
     "#USER"
   ],
-  "_resolved": "file:../d-11689-11750-n483am/package.tgz",
-  "_shasum": "a0cb4da803eb654382abf266ad345872ec121b73",
+  "_resolved": "file:../d-116931-16014-16quvpz/package.tgz",
+  "_shasum": "9cf14aa718978309d704c388b7565f30c3c58525",
   "_shrinkwrap": null,
-  "_spec": "/tmp/d-11689-11750-n483am/package.tgz",
-  "_where": "/tmp/apm-install-dir-11689-11750-2oa026",
+  "_spec": "/tmp/d-116931-16014-16quvpz/package.tgz",
+  "_where": "/tmp/apm-install-dir-116931-16014-11sfdwc",
   "bugs": {
     "url": "https://github.com/aki77/atom-emacs-plus/issues"
   },
@@ -77,5 +77,5 @@
     "type": "git",
     "url": "git+https://github.com/aki77/atom-emacs-plus.git"
   },
-  "version": "0.11.0"
+  "version": "0.11.1"
 }
