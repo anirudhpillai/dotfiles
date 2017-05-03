@@ -136,6 +136,7 @@ hide_edge_borders both
 
 # hiding title bars
 for_window [class="^.*"] border pixel 1
+for_window [class="trayer"] border pixel 0
 
 # Status bar
 # bar {
