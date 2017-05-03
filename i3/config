@@ -187,3 +187,6 @@ exec --no-startup-id nm-applet
 
 # Albert for dmenu
 exec albert
+
+# Trayer
+exec_always trayer --height 15 --edge top --align center --SetDockType false --expand false --widthtype request  --transparent true --alpha 0  --tint 0x141C24
