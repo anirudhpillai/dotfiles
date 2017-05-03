@@ -82,7 +82,8 @@ class LemonBar:
             "",
             dark_grey,
             sep_right,
-            self.focusedWinTitle
+            # self.focusedWinTitle
+            ""
         )
 
     def render_datetime(self):
