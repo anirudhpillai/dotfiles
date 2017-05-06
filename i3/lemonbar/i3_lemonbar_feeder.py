@@ -100,7 +100,7 @@ class LemonBar:
             sep_left,
             color_background,
             color_default,
-            time.strftime("%H:%M")
+            time.strftime("%H:%M:%S")
         )
 
         return "%s%s%s" % (cdate, stab, ctime)
@@ -167,23 +167,39 @@ class LemonBar:
 
 
 def shutdown(caller):
-    lemonpid = int(check_output('pidof -s lemonbar', shell=True))
-    if lemonpid:
+    lemonbar_pid = int(check_output('pidof -s lemonbar', shell=True))
+    if lemonbar_pid:
         os.kill(lemonpid, SIGTERM)
+    trayer_pid = int(check_output('pidof -s trayer', shell=True))
+    if trayer_pid:
+        os.kill(trayer_pid, SIGTERM)
     sys.exit(0)
 
 
 def run():
+    # TODO
+    # Need to kill all existing lemonbar or trayer processes
+
     i3 = i3ipc.Connection()
     i3thread = Thread(target=i3.main)
     lemonbar = LemonBar(i3)
     lemonbar.render()
 
+    trayer = "trayer --height 15 --edge top --align center --SetDockType false --expand false --widthtype request  --transparent true --alpha 0  --tint 0x141C24"
+
+    process = Popen(
+        trayer,
+        stdout=PIPE,
+        stderr=PIPE,
+        shell=True,
+        preexec_fn=os.setsid
+    )
+
     # Watch for i3 actions
-    i3.on('workspace::focus', lemonbar.render)
-    i3.on('window::title',    lemonbar.on_window_title_change)
-    i3.on('window::focus',    lemonbar.on_window_title_change)
-    i3.on('window::urgent',   lemonbar.render)
+    # i3.on('workspace::focus', lemonbar.render)
+    # i3.on('window::title',    lemonbar.on_window_title_change)
+    # i3.on('window::focus',    lemonbar.on_window_title_change)
+    # i3.on('window::urgent',   lemonbar.render)
     i3.on('ipc-shutdown',     shutdown)
 
     # listen whenever a key binding is triggered
@@ -191,8 +207,8 @@ def run():
 
     def loop():
         lemonbar.render()
-        Timer(10.0, loop).start()
+        Timer(10, loop).start()
 
-    loop()
-
+    loop_thread = Thread(target=loop)
+    loop_thread.start()
     i3thread.start()
