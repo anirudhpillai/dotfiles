@@ -5,9 +5,9 @@ import re
 import sys
 import time
 import i3ipc
-from signal import SIGTERM
-from threading import Thread, Timer
-from subprocess import Popen, PIPE, check_output
+import signal
+import threading
+import subprocess
 from i3_lemonbar_conf import *
 
 
@@ -106,7 +106,7 @@ class LemonBar:
         return "%s%s%s" % (cdate, stab, ctime)
 
     def render_battery(self):
-        acpi = check_output('acpi').decode().split()
+        acpi = subprocess.check_output('acpi').decode().split()
         status = acpi[2][:-1]
         level = int(acpi[3][0:2])
 
@@ -135,7 +135,7 @@ class LemonBar:
         return "%s" % (level)
 
     def render_volume(self):
-        amixer = check_output("amixer get Master", shell=True).decode()
+        amixer = subprocess.check_output("amixer get Master", shell=True).decode()
         match = re.search("\[(\d+)%\]", amixer)
         level = int(match.group(1))
 
@@ -167,30 +167,27 @@ class LemonBar:
 
 
 def shutdown(caller):
-    lemonbar_pid = int(check_output('pidof -s lemonbar', shell=True))
+    lemonbar_pid = int(subprocess.check_output('pidof -s lemonbar', shell=True))
     if lemonbar_pid:
-        os.kill(lemonpid, SIGTERM)
-    trayer_pid = int(check_output('pidof -s trayer', shell=True))
+        os.kill(lemonpid, signal.SIGTERM)
+    trayer_pid = int(subprocess.check_output('pidof -s trayer', shell=True))
     if trayer_pid:
-        os.kill(trayer_pid, SIGTERM)
+        os.kill(trayer_pid, signal.SIGTERM)
     sys.exit(0)
-
+    
 
 def run():
-    # TODO
-    # Need to kill all existing lemonbar or trayer processes
-
     i3 = i3ipc.Connection()
-    i3thread = Thread(target=i3.main)
+    i3thread = threading.Thread(target=i3.main)
     lemonbar = LemonBar(i3)
     lemonbar.render()
 
     trayer = "trayer --height 15 --edge top --align center --SetDockType false --expand false --widthtype request  --transparent true --alpha 0  --tint 0x141C24"
 
-    process = Popen(
+    process = subprocess.Popen(
         trayer,
-        stdout=PIPE,
-        stderr=PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
         shell=True,
         preexec_fn=os.setsid
     )
@@ -207,8 +204,8 @@ def run():
 
     def loop():
         lemonbar.render()
-        Timer(10, loop).start()
+        threading.Timer(10, loop).start()
 
-    loop_thread = Thread(target=loop)
+    loop_thread = threading.Thread(target=loop)
     loop_thread.start()
     i3thread.start()
