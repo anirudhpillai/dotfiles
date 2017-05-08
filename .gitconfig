@@ -1,0 +1,15 @@
+[user]
+	email = anirudhx5@gmail.com
+	name = Anirudh
+	
+[push]
+	default = simple
+
+[alias]
+	a = add .
+	c = commit -m
+
+	lg = log --oneline --graph
+	s = status
+	d = diff
+	dc = diff --cached
