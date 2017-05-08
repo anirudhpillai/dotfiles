@@ -24,6 +24,8 @@ alias gc="google-chrome-stable"
 
 # Git Aliases
 alias g="git"
+alias push="git push"
+alias pull="git pull"
 
 # Readline colors
 set -g fish_color_command white
