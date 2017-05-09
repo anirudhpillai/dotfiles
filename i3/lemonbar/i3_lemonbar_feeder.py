@@ -117,6 +117,9 @@ class LemonBar:
             if level < 35:
                 color_default = color_battery_critical
                 level = " Stop Playing with Fire and PLUG IT IN! %s" % level
+                if level < 25:
+                    subprocess.call(["pkill", "notify-osd"])
+                    subprocess.call(["notify-send", "Battery Low", "Plug it in!"])
             elif level < 50:
                 level = " %s" % level
                 color_default = color_battery_mid
@@ -174,7 +177,7 @@ def shutdown(caller):
     if trayer_pid:
         os.kill(trayer_pid, signal.SIGTERM)
     sys.exit(0)
-    
+
 
 def run():
     i3 = i3ipc.Connection()
@@ -204,7 +207,7 @@ def run():
 
     def loop():
         lemonbar.render()
-        threading.Timer(10, loop).start()
+        threading.Timer(1, loop).start()
 
     loop_thread = threading.Thread(target=loop)
     loop_thread.start()
