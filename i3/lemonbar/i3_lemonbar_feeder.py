@@ -115,11 +115,11 @@ class LemonBar:
             level = " %s" % level
         else:
             if level < 35:
-                color_default = color_battery_critical
-                level = " Stop Playing with Fire and PLUG IT IN! %s" % level
                 if level < 25:
                     subprocess.call(["pkill", "notify-osd"])
                     subprocess.call(["notify-send", "Battery Low", "Plug it in!"])
+                color_default = color_battery_critical
+                level = " Stop Playing with Fire and PLUG IT IN! %s" % level
             elif level < 50:
                 level = " %s" % level
                 color_default = color_battery_mid
