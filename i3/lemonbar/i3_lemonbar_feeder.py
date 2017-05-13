@@ -181,7 +181,7 @@ def shutdown(caller):
 
 def run():
     i3 = i3ipc.Connection()
-    i3thread = threading.Thread(target=i3.main)
+    # i3thread = threading.Thread(target=i3.main)
     lemonbar = LemonBar(i3)
     lemonbar.render()
 
@@ -200,15 +200,17 @@ def run():
     # i3.on('window::title',    lemonbar.on_window_title_change)
     # i3.on('window::focus',    lemonbar.on_window_title_change)
     # i3.on('window::urgent',   lemonbar.render)
-    i3.on('ipc-shutdown',     shutdown)
+    # i3.on('ipc-shutdown',     shutdown)
 
     # listen whenever a key binding is triggered
-    i3.on('binding',   lemonbar.render)
+    # i3.on('binding',   lemonbar.render)
 
     def loop():
         lemonbar.render()
-        threading.Timer(1, loop).start()
+        threading.Timer(0.1, loop).start()
 
-    loop_thread = threading.Thread(target=loop)
-    loop_thread.start()
-    i3thread.start()
+    loop()
+
+    # loop_thread = threading.Thread(target=loop)
+    # loop_thread.start()
+    # i3thread.start()
