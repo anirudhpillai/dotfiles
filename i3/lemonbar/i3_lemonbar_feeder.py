@@ -53,13 +53,13 @@ class LemonBar:
             elif wsp['urgent']:
                 wsp_items += "%%{F%s B%s}%s%s%%{F%s B%s T1} %s %%{F%s B%s}%s%%{A}" % (
                     color_default,
-                    color_mail,
+                    color_focus,
                     sep_right,
                     wsp_action,
                     color_background,
-                    color_mail,
+                    color_focus,
                     wsp_name,
-                    color_mail,
+                    color_focus,
                     color_default,
                     sep_right
                 )
@@ -108,7 +108,7 @@ class LemonBar:
     def render_battery(self):
         acpi = subprocess.check_output('acpi').decode().split()
         status = acpi[2][:-1]
-        level = int(acpi[3][0:2])
+        level = int(acpi[3].rstrip("%,"))
 
         if status == "Charging":
             color_default = color_battery_charging
@@ -181,7 +181,7 @@ def shutdown(caller):
 
 def run():
     i3 = i3ipc.Connection()
-    # i3thread = threading.Thread(target=i3.main)
+    i3thread = threading.Thread(target=i3.main)
     lemonbar = LemonBar(i3)
     lemonbar.render()
 
@@ -196,21 +196,21 @@ def run():
     )
 
     # Watch for i3 actions
-    # i3.on('workspace::focus', lemonbar.render)
-    # i3.on('window::title',    lemonbar.on_window_title_change)
-    # i3.on('window::focus',    lemonbar.on_window_title_change)
-    # i3.on('window::urgent',   lemonbar.render)
+    i3.on('workspace::focus', lemonbar.render)
+    i3.on('window::title',    lemonbar.on_window_title_change)
+    i3.on('window::focus',    lemonbar.on_window_title_change)
+    i3.on('window::urgent',   lemonbar.render)
     # i3.on('ipc-shutdown',     shutdown)
 
     # listen whenever a key binding is triggered
-    # i3.on('binding',   lemonbar.render)
+    i3.on('binding',   lemonbar.render)
 
     def loop():
         lemonbar.render()
-        threading.Timer(0.1, loop).start()
+        threading.Timer(1, loop).start()
 
-    loop()
+    # loop()
 
-    # loop_thread = threading.Thread(target=loop)
-    # loop_thread.start()
-    # i3thread.start()
+    loop_thread = threading.Thread(target=loop)
+    loop_thread.start()
+    i3thread.start()

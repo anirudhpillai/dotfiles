@@ -13,6 +13,8 @@ iconfont = "FontAwesome-10"
 color_background = "#141C24"  # Default background
 color_foreground = "#D9D9D9"  # Light text color
 
+color_focus = "#FF0000"
+
 color_default = "#6DACA4"  # Default Shade, cyan
 color_default_light = "#B8D6D3"
 
