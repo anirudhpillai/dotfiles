@@ -5,20 +5,15 @@ import re
 import sys
 import time
 import i3ipc
-import signal
 import threading
 import subprocess
+from helpers import *
 from i3_lemonbar_conf import *
 
 
 class LemonBar:
     def __init__(self, i3):
         self.i3 = i3
-        self.focusedWinTitle = self.i3.get_tree().find_focused().name
-
-    def on_window_title_change(self, caller, e):
-        self.focusedWinTitle = e.container.name
-        self.render()
 
     def render_workspaces(self, display):
         wsp_icon = "%%{F%s B%s} %%{T2}%s%%{T1}" % (
@@ -169,17 +164,12 @@ class LemonBar:
         sys.stdout.flush()
 
 
-def shutdown(caller):
-    lemonbar_pid = int(subprocess.check_output('pidof -s lemonbar', shell=True))
-    if lemonbar_pid:
-        os.kill(lemonpid, signal.SIGTERM)
-    trayer_pid = int(subprocess.check_output('pidof -s trayer', shell=True))
-    if trayer_pid:
-        os.kill(trayer_pid, signal.SIGTERM)
-    sys.exit(0)
+def shutdown():
+    cleanup('lemonbar')
+    cleanup('trayer')
 
 
-def run():
+def main():
     i3 = i3ipc.Connection()
     i3thread = threading.Thread(target=i3.main)
     lemonbar = LemonBar(i3)
@@ -197,20 +187,18 @@ def run():
 
     # Watch for i3 actions
     i3.on('workspace::focus', lemonbar.render)
-    i3.on('window::title',    lemonbar.on_window_title_change)
-    i3.on('window::focus',    lemonbar.on_window_title_change)
     i3.on('window::urgent',   lemonbar.render)
-    # i3.on('ipc-shutdown',     shutdown)
-
-    # listen whenever a key binding is triggered
     i3.on('binding',   lemonbar.render)
+    i3.on('ipc-shutdown',     shutdown)
 
     def loop():
         lemonbar.render()
-        threading.Timer(1, loop).start()
+        threading.Timer(2, loop).start()
 
-    # loop()
-
-    loop_thread = threading.Thread(target=loop)
-    loop_thread.start()
+    i3thread.daemon = True
     i3thread.start()
+
+    loop()
+
+
+main()
