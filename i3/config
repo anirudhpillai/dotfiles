@@ -51,6 +51,7 @@ bindsym $mod+a focus parent
 # focus the child container
 # bindsym $mod+d focus child
 
+
 set $w1 "1: "
 set $w2 "2: "
 set $w3 "3: "
@@ -138,6 +139,8 @@ hide_edge_borders both
 for_window [class="^.*"] border pixel 1
 for_window [class="trayer"] border pixel 0
 
+no_focus [class="trayer"]
+
 # Status bar
 # bar {
 #         # status_command i3blocks -c ~/.config/i3/i3blocks.conf
@@ -154,9 +157,9 @@ for_window [class="trayer"] border pixel 0
 #         # mode hide
 # }
 
-bar {
-    i3bar_command ~/.config/i3/lemonbar/i3_lemonbar.py
-}
+# bar {
+#     i3bar_command ~/.config/i3/lemonbar/i3_lemonbar.py
+# }
 
 # Custom key bindings
 # nautilus
@@ -188,6 +191,8 @@ exec --no-startup-id nm-applet
 
 # Albert for dmenu
 exec albert
+
+exec_always --no-startup-id polybar example
 
 # Trayer
 # exec_always trayer --height 15 --edge top --align center --SetDockType false --expand false --widthtype request  --transparent true --alpha 0  --tint 0x141C24

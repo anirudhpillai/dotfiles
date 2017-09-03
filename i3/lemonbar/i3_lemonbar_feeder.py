@@ -110,6 +110,7 @@ class LemonBar:
             level = " %s" % level
         else:
             if level < 35:
+                subprocess.run(["xbacklight", "-set", "25"])
                 if level < 25:
                     subprocess.call(["pkill", "notify-osd"])
                     subprocess.call(["notify-send", "Battery Low", "Plug it in!"])
@@ -148,7 +149,6 @@ class LemonBar:
         return "%s" % (level)
 
     def render(self, caller=None, e=None):
-        # Render one bar per each output
         out = ''
         outputs = [out.name for out in self.i3.get_outputs() if out['active']]
         for idx, output in enumerate(outputs):
