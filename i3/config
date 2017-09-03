@@ -50,6 +50,7 @@ bindsym $mod+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
+bindsym $mod+d exec "rofi -show run -font 'Ubuntu 18' -width 40 -lines 3 -padding 20 -separator-style line -hide-scrollbar -bw 2 -bc '#B6B7BA' -color-window '#2a2a2a, #268bd2, #268bd2' -color-normal '#2a2a2a, #a8a59e, #2a2a2a, #2a2a2a, #268bd2' -color-active '#2a2a2a, #268bd2, #2a2a2a, #2a2a2a, #268bd2' -color-urgent '#2a2a2a, #dc322f, #2a2a2a, #2a2a2a, #dc322f' -line-margin 20"
 
 
 set $w1 "1: "
@@ -190,7 +191,7 @@ bindsym $mod+m exec xbacklight -dec 20 # decrease screen brightness
 exec --no-startup-id nm-applet
 
 # Albert for dmenu
-exec albert
+# exec albert
 
 exec_always --no-startup-id polybar example
 
