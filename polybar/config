@@ -50,7 +50,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = filesystem xbacklight volume xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight volume xkeyboard memory cpu wlan eth battery temperature date powermenu script
 
 tray-position = right
 tray-padding = 2
@@ -142,6 +142,12 @@ format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #0a6cf5
 
 label = %time% %date%
+
+
+[module/script]
+type = custom/script
+exec =  /home/anirudh/.config/polybar/battery.py
+interval = 5
 
 
 [module/battery]
