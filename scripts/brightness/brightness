@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+
+import subprocess
+import sys
+
+
+current_brightness = float(subprocess.check_output("get_brightness"))
+
+if sys.argv[1] == "inc":
+    new_brightness = min(current_brightness + 0.1, 1)
+else:
+    new_brightness = max(current_brightness - 0.1, 0)
+
+subprocess.call("sudo set_brightness {}".format(new_brightness), shell=True)

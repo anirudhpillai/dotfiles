@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+
+import subprocess
+
+
+current_brightness = subprocess.check_output(
+    "cat /sys/class/backlight/intel_backlight/brightness",
+    shell=True
+)
+
+max_brightness = subprocess.check_output(
+    "cat /sys/class/backlight/intel_backlight/max_brightness",
+    shell=True
+)
+
+current_brightness = int(current_brightness)
+max_brightness = int(max_brightness)
+
+print(round(current_brightness / max_brightness, 2), end="")
