@@ -93,7 +93,7 @@ format-volume-padding = 2
 
 [module/script]
 type = custom/script
-exec =  /home/anirudh/.config/polybar/battery.py
+exec =  /home/ani/.config/polybar/battery.py
 interval = 5
 
 

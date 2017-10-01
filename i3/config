@@ -181,8 +181,8 @@ bindsym $mod+i exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound 
 bindsym $mod+o exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 
 # Sreen brightness controls
-bindsym $mod+b exec xbacklight -inc 20 # increase screen brightness
-bindsym $mod+m exec xbacklight -dec 20 # decrease screen brightness
+bindsym $mod+b exec brightness inc # increase screen brightness
+bindsym $mod+m exec brightness dec # decrease screen brightness
 
 
 # Daemons
