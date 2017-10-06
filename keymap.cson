@@ -1,0 +1,16 @@
+'.platform-linux':
+  'ctrl-p': 'core:move-up'
+  'ctrl-;': 'fuzzy-finder:toggle-file-finder'
+
+'.platform-darwin, .platform-win32, .platform-linux':
+  'ctrl-g': 'core:cancel'
+
+'.platform-win32 atom-text-editor, .platform-linux atom-text-editor':
+  'ctrl-e': 'editor:move-to-end-of-screen-line'
+
+'body':
+  'ctrl-w': 'core:cut'
+
+'atom-workspace atom-text-editor.emacs-plus:not([mini])':
+  'ctrl-r': 'core:redo'
+  
