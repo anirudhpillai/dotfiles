@@ -36,3 +36,6 @@ set -g fish_color_valid_path
 # set -g fish_color_param d7af5f
 
 set -g theme_color_scheme solarized
+
+# OPAM configuration
+source /home/ani/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
