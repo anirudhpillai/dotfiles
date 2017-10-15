@@ -16,3 +16,7 @@
 
 ;; Setting font size for window mode
 (set-face-attribute 'default nil :height 120)
+
+;; Hide Scrollbar
+(toggle-scroll-bar -1)
+
