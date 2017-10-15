@@ -39,3 +39,7 @@ set -g theme_color_scheme solarized
 
 # OPAM configuration
 source /home/ani/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
+
+# Setting GOPATH and added it to PATH
+export GOPATH=$HOME/Desktop/go
+set -x PATH $PATH $GOPATH/bin
