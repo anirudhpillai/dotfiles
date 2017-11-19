@@ -48,3 +48,5 @@ set -x PATH $PATH $GOPATH/bin
 export ORACLE_HOME=/home/ani/Desktop/cx_oracle/instantclient_11_2
 set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH $ORACLE_HOME
 
+# Connect to Headphones
+alias headphones="python3 ~/dotfiles/a2dp.py 00:02:5B:12:E8:0B"
