@@ -43,3 +43,8 @@ source /home/ani/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
 # Setting GOPATH and added it to PATH
 export GOPATH=$HOME/Desktop/go
 set -x PATH $PATH $GOPATH/bin
+
+# CX Oracle
+export ORACLE_HOME=/home/ani/Desktop/cx_oracle/instantclient_11_2
+set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH $ORACLE_HOME
+

@@ -15,7 +15,7 @@
 (load "~/.emacs.d/lisp/PG/generic/proof-site")
 
 ;; Setting font size for window mode
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 160)
 
 ;; Hide Scrollbar
 (toggle-scroll-bar -1)
