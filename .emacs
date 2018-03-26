@@ -20,3 +20,5 @@
 ;; Hide Scrollbar
 (toggle-scroll-bar -1)
 
+;; ocaml tuareg
+(load "/home/ani/.opam/system/share/emacs/site-lisp/tuareg-site-file")

@@ -1,3 +1,4 @@
+
 # Windows key as mod
 set $mod Mod4
 
@@ -197,3 +198,9 @@ exec_always --no-startup-id polybar example
 
 # Trayer
 # exec_always trayer --height 15 --edge top --align center --SetDockType false --expand false --widthtype request  --transparent true --alpha 0  --tint 0x141C24
+
+# randomised wallpaper
+# exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
+
+# static wallpaper
+exec --no-startup-id feh --bg-fill /usr/share/backgrounds/Seebrücke_Graal-Müritz_by_Oliver_hb.jpg
