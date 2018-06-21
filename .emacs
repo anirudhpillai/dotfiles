@@ -11,14 +11,8 @@
 (setq auto-save-default nil) ; stop creating #autosave# files
 (electric-pair-mode 1) ;; auto close bracket insertion
 
-;; Open .v files with Proof General's Coq mode
-(load "~/.emacs.d/lisp/PG/generic/proof-site")
-
 ;; Setting font size for window mode
 (set-face-attribute 'default nil :height 160)
 
 ;; Hide Scrollbar
 (toggle-scroll-bar -1)
-
-;; ocaml tuareg
-(load "/home/ani/.opam/system/share/emacs/site-lisp/tuareg-site-file")

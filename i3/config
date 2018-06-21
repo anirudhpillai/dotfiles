@@ -51,8 +51,7 @@ bindsym $mod+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
-bindsym $mod+d exec "rofi -show run -font 'Ubuntu 18' -width 40 -lines 3 -padding 20 -separator-style line -hide-scrollbar -bw 2 -bc '#B6B7BA' -color-window '#2a2a2a, #268bd2, #268bd2' -color-normal '#2a2a2a, #a8a59e, #2a2a2a, #2a2a2a, #268bd2' -color-active '#2a2a2a, #268bd2, #2a2a2a, #2a2a2a, #268bd2' -color-urgent '#2a2a2a, #dc322f, #2a2a2a, #2a2a2a, #dc322f' -line-margin 20"
-
+bindsym $mod+d exec "rofi -show drun -font 'Ubuntu 18' -width 30 -lines 3 -padding 20 -separator-style line -hide-scrollbar -bw 3 -bc '#B6B7BA' -color-window '#2a2a2a, #268bd2, #268bd2' -color-normal '#2a2a2a, #a8a59e, #2a2a2a, #2a2a2a, #268bd2' -color-active '#2a2a2a, #268bd2, #2a2a2a, #2a2a2a, #268bd2' -color-urgent '#2a2a2a, #dc322f, #2a2a2a, #2a2a2a, #dc322f' -line-margin 20"
 
 set $w1 "1: "
 set $w2 "2: "
@@ -203,4 +202,4 @@ exec_always --no-startup-id polybar example
 # exec --no-startup-id feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
 # static wallpaper
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/Seebrücke_Graal-Müritz_by_Oliver_hb.jpg
+exec --no-startup-id feh --bg-fill /usr/share/backgrounds/On_top_of_the_Rubihorn_by_Matthias_Niess.jpg

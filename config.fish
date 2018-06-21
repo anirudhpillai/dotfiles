@@ -37,16 +37,9 @@ set -g fish_color_valid_path
 
 set -g theme_color_scheme solarized
 
-# OPAM configuration
-source /home/ani/.opam/opam-init/init.fish > /dev/null 2> /dev/null or true
-
 # Setting GOPATH and added it to PATH
 export GOPATH=$HOME/Desktop/go
 set -x PATH $PATH $GOPATH/bin
-
-# CX Oracle
-export ORACLE_HOME=/home/ani/Desktop/cx_oracle/instantclient_11_2
-set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH $ORACLE_HOME
 
 # Connect to Headphones
 alias headphones="python3 ~/dotfiles/a2dp.py 00:02:5B:12:E8:0B"
