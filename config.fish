@@ -24,6 +24,7 @@ alias gc="google-chrome-stable"
 
 # Git Aliases
 alias g="git"
+alias log="git log"
 alias push="git push"
 alias pull="git pull"
 
